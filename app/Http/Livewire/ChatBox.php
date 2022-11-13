@@ -9,8 +9,11 @@ use Livewire\Component;
 class ChatBox extends Component
 {
     public $chats;
+    public $activeChat;
+
     public function mount(){
         $this->chats = Auth::user()->chats;
+        $this->activeChat = Auth::user()->chats()->latest()->first();
     }
     public function render()
     {
